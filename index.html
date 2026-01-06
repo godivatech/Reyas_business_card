@@ -255,7 +255,7 @@
         }
 
         .dark .p-text {
-            color: #CCC;
+            color: #F0F0F0;
         }
 
         /* Ventures List */
@@ -297,7 +297,7 @@
         .award-text {
             font-size: 13px;
             line-height: 1.5;
-            color: #AAA;
+            color: #E5E7EB;
         }
 
         /* Quote Box */
@@ -340,7 +340,7 @@
         .tagline-final {
             margin-top: 20px;
             font-size: 11px;
-            color: #666;
+            color: #95A5A6;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -405,6 +405,34 @@
             color: #FFF;
             position: relative;
             z-index: 3;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            transition-delay: 0.4s;
         }
     </style>
 </head>
@@ -677,6 +705,41 @@
         // Cleanup
         document.body.removeChild(link);
     }
+
+    // Scroll-triggered animations
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all sections to animate
+        const mainCard = document.querySelector('.main-profile-card');
+        const contentBlocks = document.querySelectorAll('.content-block');
+        const allSections = [mainCard, ...contentBlocks].filter(el => el !== null);
+
+        // Add animation class to all sections
+        allSections.forEach(section => {
+            section.classList.add('animate-on-scroll');
+        });
+
+        // Create Intersection Observer
+        const observerOptions = {
+            threshold: 0.15, // Trigger when 15% of element is visible
+            rootMargin: '0px 0px -100px 0px' // Trigger slightly before element comes into view
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animated class when element comes into view
+                    entry.target.classList.add('animated');
+                    // Optional: stop observing after animation (one-time animation)
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        allSections.forEach(section => {
+            observer.observe(section);
+        });
+    });
 </script>
 
 </html>
