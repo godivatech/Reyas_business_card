@@ -477,6 +477,66 @@
             bottom: 12px;
             width: 100%;
             z-index: 2;
+
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 480px) {
+            .card-header-bg {
+                height: 380px;
+                /* Increase height to push bottom down */
+                display: block;
+                padding: 80px 20px 40px 20px;
+                /* Increase top padding to push text down */
+                position: relative;
+                overflow: hidden;
+            }
+
+            .info-card {
+                width: 65%;
+                /* Restrict text width so it doesn't hit the image */
+                max-width: none;
+                z-index: 20;
+                position: relative;
+                margin-top: 0 !important;
+                /* Reset margin, rely on padding */
+            }
+
+            .name {
+                font-size: 22px;
+                text-align: left;
+            }
+
+            .alias {
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            /* Restore Role Line Style */
+            .role-wrapper {
+                border-left: 4px solid var(--wave-accent);
+                padding-left: 15px;
+                text-align: left;
+                width: 100%;
+                border-bottom: none;
+                padding-bottom: 0;
+                margin: 0 0 25px 0;
+            }
+
+            .profile-container-inner {
+                position: absolute;
+                bottom: -50px;
+                right: -90px;
+                /* Push further right to allow larger size */
+                margin-top: 0;
+                width: auto;
+            }
+
+            .profile-image-inner {
+                width: 350px;
+                /* Restored size for impact */
+                height: auto;
+            }
         }
 
         .dot {
