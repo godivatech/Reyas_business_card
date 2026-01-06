@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. A. S. Reyas | Cedoi Reyas - Digital Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            /* Theme Variables */
+            --bg-page: #ECECEC;
+            --bg-container: #FFFFFF;
+            --section-dark: #0B1026;
+            --section-darker: #070b1a;
+            --cyan: #4DD0E1;
+            --cyan-light: #80DEEA;
+            --pink: #E91E63;
+            --pink-dark: #C2185B;
+            --cyan-gradient: linear-gradient(135deg, #4DD0E1, #26C6DA, #00ACC1);
+            --pink-gradient: linear-gradient(135deg, #FF6090, #E91E63, #C2185B);
+
+            /* UPDATED: Changed Accent Color to Dark Navy */
+            --wave-accent: #1A237E;
+
+            --text-dark: #1A237E;
+            --text-light: #F0F0F0;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-container);
+            position: relative;
+            box-shadow: 0 0 50px rgba(50, 50, 50, 0.1);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* === MAIN PROFILE CARD (Consolidated) === */
+        .main-profile-card {
+            position: relative;
+            padding: 0;
+            overflow: visible;
+            /* Allow profile image to overlap if needed, but here it's inside */
+            /* But wait, we want the image to act as if it's partly in header and partly in content */
+        }
+
+        .card-header-bg {
+            height: 350px;
+            background: var(--section-dark);
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 40px 30px;
+            /* Top corners follow card border radius */
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .profile-container-inner {
+            position: absolute;
+            bottom: -120px;
+            right: -70px;
+            z-index: 10;
+        }
+
+        .profile-image-inner {
+            width: 420px;
+            height: auto;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            object-fit: cover;
+        }
+
+        .card-content-inner {
+            padding: 30px;
+            background: white;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        /* Info Card - No Background */
+        .info-card {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            max-width: 280px;
+            z-index: 15;
+        }
+
+
+
+        .name {
+            font-size: 28px;
+            font-weight: 900;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .alias {
+            font-size: 14px;
+            color: #B0B0B0;
+            margin-top: 2px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        /* Vertical Line Layout for Role */
+        .role-wrapper {
+            margin-top: 0;
+            padding-left: 15px;
+            /* Space from line */
+            border-left: 4px solid var(--wave-accent);
+            /* Dark Navy Vertical Line */
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        .role-wrapper::after {
+            display: none;
+            /* Remove horizontal line */
+        }
+
+        .designation {
+            font-size: 15px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .company-hero {
+            font-size: 14px;
+            color: var(--cyan);
+            /* Brand Cyan */
+            font-weight: 700;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .identity-tags {
+            margin-top: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            /* Left Align Tags */
+            gap: 10px;
+        }
+
+        .tag {
+            background: #F8F9FA;
+            padding: 6px 14px;
+            border-radius: 6px;
+            /* Slightly squarer as per ref */
+            font-size: 11px;
+            color: #444;
+            font-weight: 600;
+            border: 1px solid #E0E0E0;
+        }
+
+        /* === CONTACT BAR === */
+        .contact-bar {
+            background-color: #FAFAFA;
+            padding: 20px 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+            border-top: 1px solid #EEE;
+            border-bottom: 1px solid #EEE;
+        }
+
+        .c-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .c-icon {
+            width: 16px;
+            height: 16px;
+            fill: var(--cyan);
+        }
+
+        /* === CONTENT BLOCKS === */
+        .content-block {
+            padding: 30px;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .content-block.dark {
+            background-color: var(--section-dark);
+            color: var(--text-light);
+            border-bottom: none;
+        }
+
+        .content-block.darker {
+            background-color: var(--section-darker);
+            color: var(--text-light);
+        }
+
+        .section-h {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 15px 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-h::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--pink);
+            margin-top: 8px;
+        }
+
+        .text-white {
+            color: #FFF;
+        }
+
+        .p-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .dark .p-text {
+            color: #CCC;
+        }
+
+        /* Ventures List */
+        .venture-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 2px solid var(--cyan);
+            padding: 12px 15px;
+            margin-bottom: 10px;
+        }
+
+        .v-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--cyan-light);
+            display: block;
+        }
+
+        .v-role {
+            font-size: 12px;
+            color: #AAA;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Awards */
+        .award-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .award-icon {
+            width: 24px;
+            flex-shrink: 0;
+            color: var(--pink);
+            padding-top: 2px;
+        }
+
+        .award-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #AAA;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            position: relative;
+            padding: 20px;
+            background: rgba(77, 208, 225, 0.1);
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .quote-text {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--cyan);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: var(--pink-gradient);
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.4);
+            text-decoration: none;
+        }
+
+        .tagline-final {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Curve Separator */
+        .curve-sep {
+            height: 40px;
+            background: var(--bg-container);
+            position: relative;
+            z-index: 1;
+        }
+
+        .curve-sep::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--section-dark);
+            border-top-right-radius: 50px;
+        }
+
+        /* Footer Shapes */
+        .footer-design {
+            position: relative;
+            height: 60px;
+            background-color: var(--bg-container);
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .shape-footer-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45%;
+            height: 50px;
+            background-color: var(--section-darker);
+            border-top-right-radius: 50px;
+            z-index: 2;
+        }
+
+        .shape-footer-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 65%;
+            height: 30px;
+            background: var(--pink-gradient);
+            border-top-left-radius: 30px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+
+        .copyright-text {
+            font-size: 10px;
+            font-weight: 700;
+            color: #FFF;
+            position: relative;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mobile-container">
+
+        <!-- MAIN PROFILE CARD (Consolidated) -->
+        <div class="card main-profile-card">
+            <!-- Top Gradient Background (Inside Card) -->
+            <div class="card-header-bg">
+                <!-- White Info Card on Left -->
+                <div class="info-card">
+                    <h1 class="name" style="text-align: left; margin-bottom: 8px;">DR. A. S. REYAS</h1>
+                    <div class="alias" style="text-align: left; margin-bottom: 25px;">(Cedoi Reyas)</div>
+
+                    <div class="role-wrapper"
+                        style="border-left: 4px solid var(--wave-accent); border-bottom: none; padding-left: 15px; padding-bottom: 0; width: 100%; margin: 0; text-align: left;">
+                        <span class="designation">FOUNDER & CHAIRMAN</span>
+                        <span class="company-hero">CEDOI India</span>
+                        <span
+                            style="display: block; margin-top: 12px; font-size: 11px; color: var(--cyan-light); font-style: italic; font-weight: 400; letter-spacing: 0.5px;">"Empowering
+                            Entrepreneurs. Creating Opportunities."</span>
+                    </div>
+                </div>
+
+                <!-- Profile Image (Right Side) -->
+                <div class="profile-container-inner">
+                    <img src="Images/Riyas 3.png" alt="Dr. A. S. Reyas" class="profile-image-inner">
+                </div>
+            </div>
+
+            <!-- Card Content (Tags) -->
+            <div class="card-content-inner" style="padding: 30px 30px 20px 30px;">
+                <!-- Tags in clean 2x2 grid -->
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
+                    <span
+                        style="background: #f8f9fa; padding: 10px 16px; border-radius: 8px; font-size: 12px; color: #495057; font-weight: 600; text-align: center;">Entrepreneur</span>
+                    <span
+                        style="background: #f8f9fa; padding: 10px 16px; border-radius: 8px; font-size: 12px; color: #495057; font-weight: 600; text-align: center;">Business
+                        Mentor</span>
+                    <span
+                        style="background: #f8f9fa; padding: 10px 16px; border-radius: 8px; font-size: 12px; color: #495057; font-weight: 600; text-align: center;">Speaker</span>
+                    <span
+                        style="background: #f8f9fa; padding: 10px 16px; border-radius: 8px; font-size: 12px; color: #495057; font-weight: 600; text-align: center;">Community
+                        Leader</span>
+                </div>
+
+                <!-- Companies - Ribbon Sidebar Style -->
+                <div style="padding: 20px 0 10px 0; border-top: 1px solid #f0f0f0; margin-top: 10px;">
+                    <!-- Heading -->
+                    <div
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #95a5a6; margin-bottom: 14px;">
+                        Founder Of</div>
+
+                    <div style="display: flex; flex-direction: column; gap: 18px;">
+
+                        <!-- CEDOI India -->
+                        <div style="position: relative; padding-left: 14px;">
+                            <!-- Ribbon Accent -->
+                            <div
+                                style="position: absolute; left: 0; top: 2px; bottom: 2px; width: 3px; background: linear-gradient(to bottom, var(--cyan), #26C6DA); border-radius: 4px;">
+                            </div>
+                            <div style="font-size: 14px; font-weight: 700; color: #2c3e50; line-height: 1.2;">CEDOI
+                                India</div>
+                            <div
+                                style="font-size: 11px; color: #7f8c8d; margin-top: 3px; font-weight: 500; letter-spacing: 0.3px;">
+                                Founder & Chairman</div>
+                        </div>
+
+                        <!-- Polymarble Sheet -->
+                        <div style="position: relative; padding-left: 14px;">
+                            <!-- Ribbon Accent -->
+                            <div
+                                style="position: absolute; left: 0; top: 2px; bottom: 2px; width: 3px; background: linear-gradient(to bottom, #667eea, #764ba2); border-radius: 4px;">
+                            </div>
+                            <div style="font-size: 14px; font-weight: 700; color: #2c3e50; line-height: 1.2;">Polymarble
+                                Sheet</div>
+                            <div
+                                style="font-size: 11px; color: #7f8c8d; margin-top: 3px; font-weight: 500; letter-spacing: 0.3px;">
+                                Leadership Role</div>
+                        </div>
+
+                        <!-- AR Residency Builders -->
+                        <div style="position: relative; padding-left: 14px;">
+                            <!-- Ribbon Accent -->
+                            <div
+                                style="position: absolute; left: 0; top: 2px; bottom: 2px; width: 3px; background: linear-gradient(to bottom, #f093fb, #f5576c); border-radius: 4px;">
+                            </div>
+                            <div style="font-size: 14px; font-weight: 700; color: #2c3e50; line-height: 1.2;">AR
+                                Residency Builders</div>
+                            <div
+                                style="font-size: 11px; color: #7f8c8d; margin-top: 3px; font-weight: 500; letter-spacing: 0.3px;">
+                                Construction and Real Estate</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section - Clean Vertical Stack -->
+            <div
+                style="background: #f8f9fa; padding: 25px 30px 30px 30px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; border-top: 1px solid #e9ecef;">
+                <!-- Phone -->
+                <a href="tel:+919842186161"
+                    style="display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 14px 0; border-bottom: 1px solid #e9ecef;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--cyan);">
+                        <path
+                            d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" />
+                    </svg>
+                    <span style="color: #2d3748; font-size: 14px; font-weight: 600;">+91 98421-86161</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:contact@cedoi.in"
+                    style="display: flex; align-items: center; gap: 14px; text-decoration: none; padding: 14px 0; border-bottom: 1px solid #e9ecef;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--cyan);">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                    <span style="color: #2d3748; font-size: 14px; font-weight: 600;">contact@cedoi.in</span>
+                </a>
+
+                <!-- Location -->
+                <div style="display: flex; align-items: center; gap: 14px; padding: 14px 0;">
+                    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--cyan);">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                    <span style="color: #2d3748; font-size: 14px; font-weight: 600;">Madurai, TN, India</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content-block">
+            <h3 class="section-h">About Me</h3>
+            <p class="p-text">
+                Dr. A. S. Reyas is a first-generation entrepreneur known for his clarity of vision, risk-taking nature,
+                and strong sense of social responsibility. His entrepreneurial journey is rooted in the Real Estate and
+                Interior Designing industry, where he gained practical business experience and delivered several
+                exemplary residential and commercial projects.
+            </p>
+            <p class="p-text" style="margin-bottom:0;">
+                He added vibrancy to the Madurai cityscape through his enterprise, AR Residency Builders & Promoters.
+                His creative mindset and dynamic execution later led him to leadership roles in manufacturing and
+                business development.
+            </p>
+        </div>
+
+        <div class="curve-sep"></div>
+
+        <div class="content-block dark">
+            <h3 class="section-h text-white">Awards & Recognition</h3>
+
+            <div class="award-box">
+                <div class="award-icon">★</div>
+                <div class="award-text">Awarded an <strong>Honorary Doctorate</strong> by a Malaysian University for
+                    contributions to business and entrepreneurship.</div>
+            </div>
+            <div class="award-box">
+                <div class="award-icon">★</div>
+                <div class="award-text">Recipient of multiple national and international business excellence awards from
+                    Governors, Ministers, and distinguished industry leaders.</div>
+            </div>
+        </div>
+
+        <div class="content-block darker">
+            <h3 class="section-h text-white">Leadership Philosophy</h3>
+            <p class="p-text">
+                Believes that success in business is built through strong relationships, strategic thinking, and the
+                ability to connect the right opportunities with the right people.
+            </p>
+            <div class="quote-box">
+                <div class="quote-text">"Empowering Entrepreneurs. Creating Opportunities."</div>
+            </div>
+
+            <div class="footer-cta">
+                <a href="https://www.cedoi.in" target="_blank" class="btn-main">Visit Official Website</a>
+                <div class="tagline-final">Building Businesses Through Connection and Strategy</div>
+            </div>
+        </div>
+
+        <div class="footer-design">
+            <div class="shape-footer-left"></div>
+            <div class="shape-footer-right">
+                <span class="copyright-text">© 2025 CEDOI India</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
