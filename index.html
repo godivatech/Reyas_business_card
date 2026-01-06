@@ -584,7 +584,14 @@
             </div>
 
             <div class="footer-cta">
-                <a href="https://www.cedoi.in" target="_blank" class="btn-main">Visit Official Website</a>
+                <a href="javascript:void(0)" onclick="saveContact()" class="btn-main"
+                    style="display: flex; align-items: center; justify-content: center; gap: 8px; width: fit-content; margin: 0 auto;">
+                    <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: white;">
+                        <path
+                            d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z" />
+                    </svg>
+                    Save Contact
+                </a>
                 <div class="tagline-final">Building Businesses Through Connection and Strategy</div>
             </div>
         </div>
@@ -599,5 +606,38 @@
     </div>
 
 </body>
+
+<script>
+    function saveContact() {
+        // vCard Data
+        var vCardData = "BEGIN:VCARD\n" +
+            "VERSION:3.0\n" +
+            "N:Reyas;Dr. A. S.;;;\n" +
+            "FN:Dr. A. S. Reyas\n" +
+            "ORG:CEDOI India\n" +
+            "TITLE:Founder & Chairman\n" +
+            "TEL;TYPE=cell,VOICE:+919842186161\n" +
+            "EMAIL;TYPE=work,INTERNET:contact@cedoi.in\n" +
+            "URL:https://www.cedoi.in\n" +
+            "ADR;TYPE=work:;;Madurai\\, TN\\, India;;;;\n" +
+            "END:VCARD";
+
+        // Create Blob
+        var blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+
+        // Create Download Link
+        var link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Dr_AS_Reyas.vcf');
+        document.body.appendChild(link);
+
+        // Trigger Click
+        link.click();
+
+        // Cleanup
+        document.body.removeChild(link);
+    }
+</script>
 
 </html>
