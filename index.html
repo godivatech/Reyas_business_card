@@ -494,12 +494,12 @@
 
             .info-card {
                 width: 65%;
-                /* Restrict text width so it doesn't hit the image */
                 max-width: none;
                 z-index: 20;
                 position: relative;
                 margin-top: 0 !important;
-                /* Reset margin, rely on padding */
+                transform: translateY(60px);
+                /* Push down by 60px */
             }
 
             .name {
@@ -525,9 +525,9 @@
 
             .profile-container-inner {
                 position: absolute;
-                bottom: -50px;
+                bottom: 10px;
+                /* Moved down from -50px */
                 right: -90px;
-                /* Push further right to allow larger size */
                 margin-top: 0;
                 width: auto;
             }
