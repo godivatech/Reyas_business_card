@@ -30,6 +30,11 @@
             --text-light: #F0F0F0;
         }
 
+        /* Global Reset */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg-page);
             margin: 0;
@@ -651,6 +656,17 @@
                 font-size: 15px;
             }
 
+            /* Reduce padding for full-width mobile appearance */
+            .content-block {
+                padding: 25px 15px;
+                /* Further reduced horizontal padding */
+            }
+
+            .card-content-inner {
+                padding: 25px 15px 20px 15px !important;
+                /* Further reduced horizontal padding */
+            }
+
             /* Header Adjustments */
             .card-header-bg {
                 height: 340px;
@@ -667,7 +683,6 @@
                 position: relative;
                 margin-top: 0 !important;
                 transform: translateY(100px);
-                /* Move up from 100px */
             }
 
             .name {
@@ -694,10 +709,55 @@
             .profile-container-inner {
                 position: absolute;
                 bottom: -115px;
-                /* Moved down from -70px */
                 right: -90px;
                 margin-top: 0;
                 width: auto;
+            }
+        }
+
+        /* === GLOBAL FULL-WIDTH SECTIONS === */
+        /* Make dark sections edge-to-edge on all screen sizes */
+        .content-block.dark,
+        .content-block.darker {
+            width: 100%;
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            flex-shrink: 0;
+            /* Prevent shrinking if in flex container */
+        }
+
+        /* Restore inner padding for dark section content */
+        .content-block.dark .section-h,
+        .content-block.dark .award-box,
+        .content-block.dark .p-text,
+        .content-block.dark .quote-box,
+        .content-block.dark .footer-cta,
+        .content-block.darker .section-h,
+        .content-block.darker .p-text,
+        .content-block.darker .quote-box,
+        .content-block.darker .footer-cta {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        @media screen and (max-width: 480px) {
+
+            .content-block.dark .section-h,
+            .content-block.dark .award-box,
+            .content-block.dark .p-text,
+            .content-block.dark .quote-box,
+            .content-block.dark .footer-cta,
+            .content-block.darker .section-h,
+            .content-block.darker .p-text,
+            .content-block.darker .quote-box,
+            .content-block.darker .footer-cta {
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
             .profile-image-inner {
