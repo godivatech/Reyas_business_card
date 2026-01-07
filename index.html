@@ -983,6 +983,29 @@
                 /* Hide tooltip on mobile for cleaner look */
             }
         }
+
+        /* Tagline Responsive Behavior */
+        .tagline-phrase {
+            display: inline-block;
+        }
+
+        .tagline-separator {
+            color: #cbd5e1;
+            margin: 0 8px;
+            font-weight: 300;
+        }
+
+        @media screen and (max-width: 480px) {
+            .tagline-separator {
+                display: none;
+            }
+
+            .tagline-phrase {
+                display: block;
+                width: 100%;
+                margin-bottom: 4px;
+            }
+        }
     </style>
 </head>
 
@@ -1183,8 +1206,10 @@
 
                             <div
                                 style="font-size: 13px; font-weight: 600; color: #1A237E; letter-spacing: 1.5px; line-height: 1.8; font-family: 'Montserrat', sans-serif;">
-                                Architecting Dreams <span style="color: var(--cyan); font-weight: 700;">•</span>
-                                Empowering Entrepreneurs <span style="color: var(--cyan); font-weight: 700;">•</span>
+                                Architecting Dreams <span
+                                    style="color: #cbd5e1; margin: 0 8px; font-weight: 300;">|</span>
+                                Empowering Entrepreneurs <span
+                                    style="color: #cbd5e1; margin: 0 8px; font-weight: 300;">|</span>
                                 Building Legacies
                             </div>
                         </div>
