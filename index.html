@@ -483,11 +483,11 @@
         /* Mobile Responsiveness */
         @media screen and (max-width: 480px) {
             .card-header-bg {
-                height: 380px;
-                /* Increase height to push bottom down */
+                height: 340px;
+                /* Reduced from 380px */
                 display: block;
-                padding: 80px 20px 40px 20px;
-                /* Increase top padding to push text down */
+                padding: 40px 20px 40px 20px;
+                /* Reduced top padding from 80px */
                 position: relative;
                 overflow: hidden;
             }
@@ -498,8 +498,8 @@
                 z-index: 20;
                 position: relative;
                 margin-top: 0 !important;
-                transform: translateY(200px);
-                /* Push down further */
+                transform: translateY(100px);
+                /* Move up from 100px */
             }
 
             .name {
@@ -525,16 +525,16 @@
 
             .profile-container-inner {
                 position: absolute;
-                bottom: -100px;
-                /* Negative value pushes image DOWN */
+                bottom: -115px;
+                /* Moved down from -70px */
                 right: -90px;
                 margin-top: 0;
                 width: auto;
             }
 
             .profile-image-inner {
-                width: 350px;
-                /* Restored size for impact */
+                width: 380px;
+                /* Increased from 350px */
                 height: auto;
             }
         }
