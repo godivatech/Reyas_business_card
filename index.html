@@ -717,18 +717,21 @@
 
         /* === GLOBAL FULL-WIDTH SECTIONS === */
         /* Make dark sections edge-to-edge on all screen sizes */
+        /* === GLOBAL FULL-WIDTH SECTIONS === */
+        /* Make dark sections edge-to-edge on all screen sizes */
         .content-block.dark,
         .content-block.darker {
-            width: 100%;
-            max-width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-            padding-left: 0;
-            padding-right: 0;
+            width: calc(100% + 60px) !important;
+            max-width: none !important;
+            margin-left: -30px !important;
+            margin-right: -30px !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
             padding-top: 35px;
             padding-bottom: 35px;
             flex-shrink: 0;
             /* Prevent shrinking if in flex container */
+            border-radius: 0 !important;
         }
 
         /* Restore inner padding for dark section content */
@@ -746,6 +749,14 @@
         }
 
         @media screen and (max-width: 480px) {
+
+            /* Mobile Full Width Override */
+            .content-block.dark,
+            .content-block.darker {
+                margin-left: -15px !important;
+                margin-right: -15px !important;
+                width: calc(100% + 30px) !important;
+            }
 
             .content-block.dark .section-h,
             .content-block.dark .award-box,
