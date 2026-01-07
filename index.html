@@ -79,8 +79,8 @@
             align-items: center;
             padding: 40px 30px;
             /* Top corners follow card border radius */
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
 
         /* Optional: Add overlay for better text readability */
@@ -93,8 +93,8 @@
             bottom: 0;
             background: rgba(11, 16, 38, 0.2);
             /* Dark overlay with 20% opacity for maximum pattern visibility */
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
             z-index: 1;
         }
 
@@ -1441,7 +1441,7 @@
                     dots[slideIndex - 1].className += " active";
                 }
 
-                setTimeout(showSlides, 1800); // Change image every 2 seconds
+                setTimeout(showSlides, 2100); // Change image every 2 seconds
             }
 
             // Initialize Lucide Icons
