@@ -771,10 +771,25 @@
                 padding-right: 20px;
             }
 
+            /* Fix Mobile Image Overlap: Reduce size and push right */
             .profile-image-inner {
-                width: 380px;
-                /* Increased from 350px */
+                width: 345px !important;
+                /* Reduced from 380px to prevent overlap */
                 height: auto;
+            }
+
+            /* Adjust container to move image further right */
+            .profile-container-inner {
+                right: -100px !important;
+                /* Push further right (was -90px) */
+                bottom: -115px;
+            }
+
+            /* Ensure text has space and is on top */
+            .info-card {
+                width: 68%;
+                /* Adjusted width */
+                z-index: 25;
             }
         }
 
