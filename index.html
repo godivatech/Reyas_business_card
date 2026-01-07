@@ -159,10 +159,10 @@
         /* Vertical Line Layout for Role */
         .role-wrapper {
             margin-top: 0;
-            padding-left: 15px;
-            /* Space from line */
-            border-left: 4px solid var(--wave-accent);
-            /* Dark Navy Vertical Line */
+            padding-left: 0;
+            /* Removed padding */
+            border-left: none;
+            /* Removed Vertical Line */
             display: block;
             margin-bottom: 25px;
         }
@@ -715,9 +715,10 @@
             }
 
             /* Restore Role Line Style */
+            /* Restore Role Line Style - REMOVED for alignment */
             .role-wrapper {
-                border-left: 4px solid var(--wave-accent);
-                padding-left: 15px;
+                border-left: none;
+                padding-left: 0;
                 text-align: left;
                 width: 100%;
                 border-bottom: none;
@@ -1028,7 +1029,7 @@
 
 
                     <div class="role-wrapper"
-                        style="border-left: 4px solid var(--wave-accent); border-bottom: none; padding-left: 15px; padding-bottom: 0; width: 100%; margin: 0; text-align: left;">
+                        style="border-left: none; border-bottom: none; padding-left: 0; padding-bottom: 0; width: 100%; margin: 0; text-align: left;">
                         <span class="designation">FOUNDER & CHAIRMAN</span>
                         <span class="company-hero">CEDOI India</span>
                         <span
@@ -1208,10 +1209,8 @@
 
                             <div
                                 style="font-size: 15px; font-weight: 600; color: #1A237E; letter-spacing: 1.5px; line-height: 1.8; font-family: 'Montserrat', sans-serif;">
-                                Architecting Dreams <span
-                                    style="color: #cbd5e1; margin: 0 8px; font-weight: 300;">|</span>
-                                Empowering Entrepreneurs <span
-                                    style="color: #cbd5e1; margin: 0 8px; font-weight: 300;">|</span>
+                                Architecting Dreams<br>
+                                Empowering Entrepreneurs<br>
                                 Building Legacies
                             </div>
                         </div>
